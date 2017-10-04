@@ -27,6 +27,13 @@
 
 {% block javascripts %}
     <script>
+        if (!!window.chrome && !!window.chrome.webstore) {
+            if (sessionStorage.getItem("Page2Visited")) {
+          sessionStorage.removeItem("Page2Visited");
+          window.location.reload(true); // force refresh page1
+            }
+        
+        }
         jQuery(document).ready(function($) {
 
         if (window.history && window.history.pushState) {

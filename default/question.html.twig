@@ -26,6 +26,11 @@
 
 {% block javascripts %}
     <script>
+        if (!!window.chrome && !!window.chrome.webstore) {
+            sessionStorage.setItem("Page2Visited", "True");
+            }
+        
+        }
         jQuery(".btn-tips").click(function () {
             jQuery(this).parent().css("color", "transparent");
             jQuery(this).parent().css("height", "auto");

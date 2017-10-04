@@ -23,12 +23,6 @@ class DefaultController extends Controller {
      * @Route("did-you-know", name="did-you-know")
      */
     public function backAction(Request $request) {
-        /*if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE) {
-            $id = $_SESSION["question"]->getId();
-            $question = $this->getDoctrine()->getRepository(Question::Class)->find($id);
-            $validate = $_SESSION["validate"];
-            return $this->render('default/info.html.twig', array("validate" => $validate, "question" => $question));
-        }*/
         if ($_SESSION['test'] == "question") {
             $id = $_SESSION["question"]->getId() - 1;
             $question = $this->getDoctrine()->getRepository(Question::Class)->find($id);
