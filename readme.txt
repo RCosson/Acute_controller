@@ -1,0 +1,1 @@
+vues et controlleur d'un projet symfony, le dernier feature demandé est d'empêcher la tricherie en revenant en arrière dans la navigateur, ma première solution a fonctionné sur tous les navigateurs sauf google chrome qui a une attitude différente vis à vis des sessions en php, j'ai donc dû bricoler une solution qui fonctionne mais avec un rendu différent.
