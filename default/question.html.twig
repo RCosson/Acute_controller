@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="question question-{{question.id}}">
+        <div class="titre">Question {{question.id}}</div>
+        <div class="runners">
+            <div class="runner{%if question.id=="1"%} active{%endif%}" ></div>
+            <div class="runner{%if question.id=="2"%} active{%endif%}"></div>
+            <div class="runner{%if question.id=="3"%} active{%endif%}"></div>
+            <div class="runner{%if question.id=="4"%} active{%endif%}"></div>
+            <div class="runner{%if question.id=="5"%} active{%endif%}"></div>
+        </div>
+        <div class="phrase">{{question.question}}</div>
+
+        {% for answer in answers %}
+            <a href="{{path('answer', {'numAnswer': answer.id}) }}" class="link_a"> <div class="answer">{{answer.answer}}</div></a>
+            {% endfor %}
+        <div class="tips"> Need some tips ?
+            <div class="btn-tips"></div>
+            <div class="close-tips"></div>
+            <div class="tip">{{question.tips}}</div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        jQuery(".btn-tips").click(function () {
+            jQuery(this).parent().css("color", "transparent");
+            jQuery(this).parent().css("height", "auto");
+            jQuery(".tip").css("display", "block");
+            jQuery(this).css("display","none");
+            jQuery(".close-tips").css("display","block");
+        });
+        jQuery(".close-tips").click(function () {
+            jQuery(this).parent().css("color", "#0d6f39");
+            jQuery(this).parent().css("height", "61px");
+            jQuery(".tip").css("display", "none");
+            jQuery(".btn-tips").css("display","block");
+            jQuery(".close-tips").css("display","none");
+        });
+    </script>
+{% endblock%}

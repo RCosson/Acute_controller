@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="question">
+        <div class="phrase back-phrase">You already answered this question!</div>
+        <a class="link_a back-answer" href="{{path('info') }}"><div class="answer">Get back to the quiz</div></a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        jQuery(document).ready(function($) {
+
+        if (window.history && window.history.pushState) {
+
+        window.history.pushState('forward', null, '{{path('info')}}');
+
+            $(window).on('popstate', function() {
+        window.location.href = "{{path('info')}}";
+        });
+        }
+        });
+        jQuery("body").css("height","100%");
+        jQuery("html").css("height","100%");
+        jQuery(".btn-tips").click(function () {
+            jQuery(this).parent().css("color", "transparent");
+            jQuery(this).parent().css("height", "auto");
+            jQuery(".tip").css("display", "block");
+            jQuery(this).css("display","none");
+            jQuery(".close-tips").css("display","block");
+        });
+        jQuery(".close-tips").click(function () {
+            jQuery(this).parent().css("color", "#0d6f39");
+            jQuery(this).parent().css("height", "61px");
+            jQuery(".tip").css("display", "none");
+            jQuery(".btn-tips").css("display","block");
+            jQuery(".close-tips").css("display","none");
+        });
+    </script>
+{% endblock%}

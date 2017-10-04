@@ -23,36 +23,17 @@ class DefaultController extends Controller {
      * @Route("did-you-know", name="did-you-know")
      */
     public function backAction(Request $request) {
-        if (isset($_SESSION["Q1"]) == true && isset($_SESSION["Q2"]) == false && isset($_SESSION["Q3"]) == false && isset($_SESSION["Q4"]) == false && isset($_SESSION["Q5"]) == false ) {
-            $questionx = 1;
-        } elseif (isset($_SESSION["Q1"]) == true && isset($_SESSION["Q2"]) == true && isset($_SESSION["Q3"]) == false && isset($_SESSION["Q4"]) == false && isset($_SESSION["Q5"]) == false ) {
-            $questionx = 2;
-        } elseif (isset($_SESSION["Q1"]) == true && isset($_SESSION["Q2"]) == true && isset($_SESSION["Q3"]) == true && isset($_SESSION["Q4"]) == false && isset($_SESSION["Q5"]) == false ) {
-            $questionx = 3;
-        } elseif (isset($_SESSION["Q1"]) == true && isset($_SESSION["Q2"]) == true && isset($_SESSION["Q3"]) == true && isset($_SESSION["Q4"]) == true && isset($_SESSION["Q5"]) == false ) {
-            $questionx = 4;
-        } elseif (isset($_SESSION["Q1"]) == true && isset($_SESSION["Q2"]) == true && isset($_SESSION["Q3"]) == true && isset($_SESSION["Q4"]) == true && isset($_SESSION["Q5"]) == true ) {
-            $questionx = 5;
-        };
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE) {
+        /*if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE) {
             $id = $_SESSION["question"]->getId();
             $question = $this->getDoctrine()->getRepository(Question::Class)->find($id);
             $validate = $_SESSION["validate"];
-            if ($_SESSION['test'] == "reponse") {
-                $_SESSION['test'] = "question";
-                echo '<script language="javascript">';
-                echo 'alert("You already answered this question")';
-                echo '</script>';
-            };
-            $_SESSION['test'] = "question";
-            return $this->render('default/info.html.twig', array("questionx" => $questionx, "validate" => $validate, "question" => $question));
-        }
-        /*return $this->render('default/back.html.twig');*/
+            return $this->render('default/info.html.twig', array("validate" => $validate, "question" => $question));
+        }*/
         if ($_SESSION['test'] == "question") {
             $id = $_SESSION["question"]->getId() - 1;
             $question = $this->getDoctrine()->getRepository(Question::Class)->find($id);
             $validate = $_SESSION["validate"];
-            return $this->render('default/info.html.twig', array("questionx" => $questionx, "validate" => $validate, "question" => $question));
+            return $this->render('default/info.html.twig', array("validate" => $validate, "question" => $question));
         } elseif ($_SESSION['test'] == "reponse") {
             return $this->render('default/back.html.twig');
         }

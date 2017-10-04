@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="info{% if validate %} good{% else %} bad{% endif %}">
+
+        <div class="emote {%if validate%} good{%else%} bad{%endif%}"></div>
+        <div class="text-congrat{%if validate%} active{%endif%}">Congrats, You rock !</div>
+        <div class="text-congrat{%if not validate%} active{%endif%}">HARD LUCK !</div>
+        <div class="Did-you">Did you know ?</div>
+        <div class="news">{{question.infoProduit}}</div>
+        {% if question.Id==5%}
+            <p class="news active">Follow us on :</p><ul class="news active2"><li>Facebook : @AcuteEnergizerIndia</li><li>Instagram: @AcuteOfficial</li><li>Share you Acute experience using the Hashtag: #UnmuteWithAcute</li></ul>
+        {%endif%}
+        {% if (question.Id<5) and (validate) %}
+            <a class="link_a" href="{{path('question', {'numQuestion': question.id+1}) }}"><div class="next-q">Next Question will also be yours!</div></a>
+        {% elseif (question.Id<5) and (not validate) %}
+            <a class="link_a" href="{{path('question', {'numQuestion': question.id+1}) }}"><div class="next-q">Next Question will be yours!</div></a>
+        {% else %}
+            <a class="link_a" href="{{path('score')}}"><div class="next-q">Get my score</div></a>
+        {%endif%}
+        <div class="news2"></div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        jQuery(document).ready(function($) {
+
+        if (window.history && window.history.pushState) {
+
+        window.history.pushState('forward', null, '{{path('did-you-know')}}');
+
+            $(window).on('popstate', function() {
+        window.location.href = "{{path('did-you-know')}}";
+        });
+        }
+        });
+        jQuery("body").css("background-color","{%if validate%}#018F45{%else%}#EA1E51{%endif%}");
+        jQuery("body").css("height","100%");
+        jQuery("html").css("height","100%");
+        jQuery(".info").parent().css("overflow", "auto");
+        jQuery(".info").parent().parent().css("overflow", "auto");
+    </script>
+{% endblock %}
+

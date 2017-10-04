@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="index">
+        <div class="logo"></div>
+        <div class="texte-intro">
+            Ready to <strong>#UnmuteWithAcute</strong><br>Join our great contest and<br>win many prizes and goodies
+        </div>
+        <div class="carton"></div>
+        <div class="btn"><a href="{{path('start')}}">Start</a></div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        jQuery("body").css("background-color","rgb(205,59,44)");
+    </script>
+{% endblock %}

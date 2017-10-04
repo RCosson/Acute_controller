@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="last-all">
+        <div class="top-logo"></div>
+        <div class="etiquette">
+            <div class="logo last"></div>
+            <div class="text-bye">See you soon !</div>
+            <a class="link_a" href="{{path('homepage')}}"><div class="btn-o">Home</div></a>
+        </div>
+        
+    </div>
+{%endblock%}
+
+{% block javascripts %}
+    <script>
+        $(".bottom").addClass("back");
+    </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="score-all">
+        <div class="text-share">Thank you for taking part to the quiz</div>
+        <div class="text-share2">To increase your chances to win, please share on your Facebook</div>
+        <div class="fb-share-button" data-href="https://www.facebook.com/AcuteEnergizerIndia/" data-layout="button" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FAcuteEnergizerIndia%2F&amp;src=sdkpreparse">Share on facebook</a></div>
+       <div class="text-share2">Or invite them to play</div>
+       <form method="POST" action="{{path('mail')}}">
+            <input type="text" name="name" required placeholder="Name">
+            <input type="email" name="email" required placeholder="Email">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+{%endblock%}
+
+{% block javascripts %}
+    <script>
+        $(".bottom").addClass("red");
+{% endblock %}

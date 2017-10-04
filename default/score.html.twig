@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="score-all">
+        <div class="logo-score{% if score<3 %} revert{% endif %}"></div>
+        <div class="your">Your score !</div>
+        <div class="score">{{score}} / 5</div>
+        {% if (score=="4") or (score=="5")%}
+            <div class="choice">
+                <div class="result">You are awesome :) </div>
+                <div class="text-result">Now that you know all about Acute Fruit Energizer spread the news and let all your friends discover how do you ENERGIZE YOUR LIFE.</div>
+            </div>
+        {% elseif (score=="2") or (score=="3")%}
+            <div class="choice">
+                <div class="result">You can do better! </div>
+                <div class="text-result">Get your Acute Fruit Energizer quick to discover all details about how to ENERGIZE YOUR LIFE.</div>
+            </div>
+        {% else %}
+            <div class="choice">
+                <div class="result">Hard luck! </div>
+                <div class="text-result">We advise you to grab your Acute Fruit Energizer as quickly as possible to ENERGIZE YOU LIFE.</div>
+            </div>
+        {%endif%}
+        <a class="link_a" href="{{path('form')}}"><div class="next">NEXT</div></a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(".bottom").addClass("red");
+    </script>
+{% endblock %}
