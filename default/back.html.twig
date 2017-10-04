@@ -11,12 +11,11 @@
     <script>
         if (!!window.chrome && !!window.chrome.webstore) {
             if (sessionStorage.getItem("Page2Visited")) {
-          sessionStorage.removeItem("Page2Visited");
-          window.location.reload(true); // force refresh page1
-     }
+            sessionStorage.removeItem("Page2Visited");
+            window.location.reload(true); // force refresh page1
         }
-        } else {
-            jQuery(document).ready(function($) {
+            };
+        jQuery(document).ready(function($) {
 
         if (window.history && window.history.pushState) {
 
